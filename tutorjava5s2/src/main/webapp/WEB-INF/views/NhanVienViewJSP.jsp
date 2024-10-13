@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,33 +13,33 @@
 <div class="container mt-5">
     <!-- Form thêm nhân viên -->
     <h2 class="mb-4">Thêm Nhân Viên</h2>
-    <form>
+    <form method="post" action="/nhanvien/add">
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="maNhanVien" class="form-label">Mã nhân viên</label>
-                <input type="text" class="form-control" id="maNhanVien" placeholder="Mã nhân viên">
+                <label for="" class="form-label">Mã nhân viên</label>
+                <input type="text" class="form-control" name="id" placeholder="Mã nhân viên">
             </div>
             <div class="col-md-6">
-                <label for="tenNhanVien" class="form-label">Tên nhân viên</label>
-                <input type="text" class="form-control" id="tenNhanVien" placeholder="Tên nhân viên">
+                <label for="" class="form-label">Tên nhân viên</label>
+                <input type="text" class="form-control" name="hoten" placeholder="Tên nhân viên">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-md-6">
-                <label for="tuoi" class="form-label">Tuổi</label>
-                <input type="number" class="form-control" id="tuoi" placeholder="Tuổi">
+                <label for="" class="form-label">Tuổi</label>
+                <input type="number" class="form-control" name="tuoi" placeholder="Tuổi">
             </div>
             <div class="col-md-6">
-                <label for="diaChi" class="form-label">Địa Chỉ</label>
-                <input type="text" class="form-control" id="diaChi" placeholder="Địa chỉ">
+                <label for="" class="form-label">Địa Chỉ</label>
+                <input type="text" class="form-control" name="diachi" placeholder="Địa chỉ">
             </div>
         </div>
 
         <div class="row mb-3">
             <div class="col-md-6">
                 <label for="phongBan" class="form-label">Phòng Ban</label>
-                <select class="form-select" id="phongBan">
+                <select class="form-select" name="phongban" id="phongBan">
                     <option selected>Chọn phòng ban</option>
                     <option value="1">Phòng Kỹ Thuật</option>
                     <option value="2">Phòng Kinh Doanh</option>
@@ -47,11 +49,11 @@
             <div class="col-md-6">
                 <label class="form-label d-block">Giới tính</label>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinhNam" value="Nam">
+                    <input class="form-check-input" type="radio" name="gioitinh" id="gioiTinhNam" value="Nam">
                     <label class="form-check-label" for="gioiTinhNam">Nam</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gioiTinh" id="gioiTinhNu" value="Nu">
+                    <input class="form-check-input" type="radio" name="gioitinh" id="gioiTinhNu" value="Nu">
                     <label class="form-check-label" for="gioiTinhNu">Nữ</label>
                 </div>
             </div>
@@ -88,16 +90,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>001</td>
-            <td>Nguyen Van A</td>
-            <td>123 Le Loi</td>
-            <td>30</td>
-            <td>Nam</td>
-            <td>Phòng Kỹ Thuật</td>
-            <td><button class="btn btn-warning btn-sm">Edit</button> <button class="btn btn-danger btn-sm">Delete</button></td>
-        </tr>
+        <c:forEach var="l" items="${list}" varStatus="c">
+            <tr>
+                <td>${c.count}</td>
+                <td>${l.id}</td>
+                <td>${l.hoten}</td>
+                <td>${l.diachi}</td>
+                <td>${l.tuoi}</td>
+                <td>${l.gioitinh}</td>
+                <td>${l.phongban}</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </c:forEach>
         <!-- Thêm các hàng khác nếu cần -->
         </tbody>
     </table>

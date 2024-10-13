@@ -1,4 +1,4 @@
-package model;
+package com.example.java5buoi5.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -24,5 +24,19 @@ public class SinhVien {
     private Integer age;
 
     private String status;
+    @ManyToOne
+    @JoinColumn(name = "lop_hoc")
+    private LopHoc lopHoc;
 
+    @Override
+    public String toString() {
+        return "SinhVien{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", age=" + age +
+                ", status='" + status + '\'' +
+                ", lopHoc=" + lopHoc +
+                '}';
+    }
 }
